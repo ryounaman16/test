@@ -1,0 +1,65 @@
+https://qiita.com/2m1tsu3/items/6d49374230afab251337
+
+HEAD
+ 各ブランチの最新コミットをHEADという
+ ひとつ前のコミット：HEAD^
+ 2つ前のコミット：HEAD~2
+
+リモートのリポジトリを取得
+ git clone repository_name
+
+変更をインデックスに加える(削除したファイルもaddしてGITに削除したことを伝えないといけない)
+ git add file_name
+
+変更をローカルリポジトリーに反映する(addされている変更すべて)
+ git commit -m "commit_comment"
+
+ローカルのブランチをリモートのブランチに反映させる
+ git push
+
+ローカルの「新しい」ブランチをリモートのブランチに反映させる
+ git push --set-upstream origin new_branch_name
+
+HEADとワーキングツリー・インデックスの差分(ファイル単位)
+ git status 
+
+commit履歴の確認
+ git log
+
+ワーキングツリーとインデックスの差分(addした後に作業した場合)
+git diff
+
+HEADとワーキングツリーの差分(addする前の確認)
+ git diff HEAD
+
+HEADとインデックスの差分(commitする前の確認)
+ git diff --cached
+
+add/commitの取り消し(指定したcommit_idまでさかのぼる)
+ git reset --soft commit_id：commit履歴のみ削除
+ git reset --mixed commit_id：addとcommit履歴を削除
+ git reset --hard commit_id：作業履歴とaddとcommit履歴を削除
+
+コミットの内容を表示
+ git shoe commit_id
+
+ローカルブランチの削除
+ git branch --delete branch1
+ git branch -D branch1(コミットしなくても強制削除)
+
+リモートリポジトリの変更をローカルに反映する(現在いるブランチに反映される)
+ git pull
+ と下記2行は同意
+ git fetch origin branch_name
+ git merge origin/branch_name
+ ===>このコマンドは使わないほうがいい。下記のコマンドで意図した動作をしてくれる
+ git branch branch1 origin/branch1
+
+
+同じブランチでほかのユーザーが作業している場合、後からPUSHしたユーザーはエラーが起きる
+error: failed to push some refs to 
+==>基本①作業①ブランチの原則
+
+プログラムを統合する
+https://qiita.com/genreh/items/8e66f6f8f1a536830081
+https://hiroki.jp/2012/07/01/4558/
